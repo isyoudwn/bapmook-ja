@@ -1,3 +1,5 @@
+import { getTodayMenu } from "./dataParser.js";
+
 /**
  * 밥플러수 성수 6호점 소식을 가져온다
  */
@@ -21,10 +23,14 @@ export const getSungsu6Menu = async () => {
         "body": null,
         "method": "GET"
     });
+    const menuData = await bapPlus6Menu.json();
+    const todayMenu = await getTodayMenu(menuData);
+
+    return todayMenu;
 }
 
 /**
- * 밥플럿그 성수역 지점 소식을 가져온다
+ * 밥플러스 성수역 지점 소식을 가져온다
  */
 export const getSungsuStationMenu = async () => {
     const bapPlusStationMenu = await fetch("https://pf.kakao.com/rocket-web/web/v2/profiles/_hqGbn", {
