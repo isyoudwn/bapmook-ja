@@ -1,6 +1,5 @@
 /**
- * menu 가져오기
+ * 성수역 menu 가져오기
  */
-export const getMenu = (req, res) => {
-    
+export const getMenu = async () => {
 }

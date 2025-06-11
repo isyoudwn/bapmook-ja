@@ -10,6 +10,7 @@
   "author": "isyoudwn",
   "license": "ISC",
   "dependencies": {
+    "cheerio": "^1.1.0",
     "dotenv": "^16.5.0",
     "express": "^5.1.0"
   }
