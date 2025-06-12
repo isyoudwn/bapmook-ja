@@ -1,4 +1,4 @@
-import { getTodayMenu } from "../../dataParser.js";
+import { getTodayMenu } from "../dataParser.js";
 
 /**
  * 밥플러스 성수의 메뉴를 가져온다

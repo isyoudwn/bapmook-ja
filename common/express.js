@@ -1,5 +1,5 @@
 import express from "express";
-import menuRouter from "./menuRouter.js";
+import menuRouter from "../domain/menu/menuRouter.js";
 
 const app = express();
 

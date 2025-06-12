@@ -1,4 +1,4 @@
-import app from "./domain/menu/express.js";
+import app from "./common/express.js";
 import { PORT } from "./common/config.js";
 import { startCron } from "./common/scheduleHanlder.js";
 

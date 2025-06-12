@@ -1,5 +1,5 @@
 import { WebClient } from "@slack/web-api"
-import { getMenu } from "./menuController.js"
+import { getMenu } from "../presentation/menuController.js"
 import { SLACK_TOKEN } from "./config.js";
 
 const slackClient = new WebClient(SLACK_TOKEN);
