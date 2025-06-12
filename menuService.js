@@ -4,6 +4,7 @@ import { getTodayMenu } from "./dataParser.js";
  * 밥플러수 성수 6호점 소식을 가져온다
  */
 export const getSungsu6Menu = async () => {
+    console.log("fetch 함수 실행")
     const bapPlus6Menu = await fetch("https://pf.kakao.com/rocket-web/web/v2/profiles/_Kyxlxbn", {
         "headers": {
             "accept": "*/*",

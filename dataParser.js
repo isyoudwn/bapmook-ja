@@ -25,9 +25,10 @@ const findTodayMenuPosts = (posts) => {
 
     const dateRegex = (month, day) => {
         return new RegExp(
-            `(?:${month}|0?${month})[\\.\\/월\\s]*0?${day}[일\\s]?`,
+            `(?:${month}|0?${month})[\\.\\/월\\s]*0?${day}[일\\s]?(?:중식)?`
         );
     };
+
 
     const regex = dateRegex(month, day);
 
@@ -49,6 +50,9 @@ const findTodayMenuPosts = (posts) => {
 export const getTodayMenu = async (menuData) => {
     const posts = getRecentPosts(menuData);
     const todayMenuPost = findTodayMenuPosts(...posts);
+    const photos = todayMenuPost[0].media;
 
-    console.log(todayMenuPost);
+    const url = photos.map((photo) => photo.url);
+
+    return url;
 }
