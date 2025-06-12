@@ -1,11 +1,10 @@
 import { getTodayMenu } from "./dataParser.js";
 
 /**
- * 밥플러수 성수 6호점 소식을 가져온다
+ * 밥플러스 성수의 메뉴를 가져온다
  */
-export const getSungsu6Menu = async () => {
-    console.log("fetch 함수 실행")
-    const bapPlus6Menu = await fetch("https://pf.kakao.com/rocket-web/web/v2/profiles/_Kyxlxbn", {
+export const todayMenu = async (url) => {
+    const response = await fetch(url, {
         "headers": {
             "accept": "*/*",
             "accept-language": "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7",
@@ -24,33 +23,9 @@ export const getSungsu6Menu = async () => {
         "body": null,
         "method": "GET"
     });
-    const menuData = await bapPlus6Menu.json();
-    const todayMenu = await getTodayMenu(menuData);
+
+    const postData = await response.json();
+    const todayMenu = await getTodayMenu(postData);
 
     return todayMenu;
-}
-
-/**
- * 밥플러스 성수역 지점 소식을 가져온다
- */
-export const getSungsuStationMenu = async () => {
-    const bapPlusStationMenu = await fetch("https://pf.kakao.com/rocket-web/web/v2/profiles/_hqGbn", {
-        "headers": {
-            "accept": "*/*",
-            "accept-language": "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7",
-            "cache": "no-cache",
-            "priority": "u=1, i",
-            "sec-ch-ua": "\"Google Chrome\";v=\"137\", \"Chromium\";v=\"137\", \"Not/A)Brand\";v=\"24\"",
-            "sec-ch-ua-mobile": "?1",
-            "sec-ch-ua-platform": "\"Android\"",
-            "sec-fetch-dest": "empty",
-            "sec-fetch-mode": "cors",
-            "sec-fetch-site": "same-origin",
-            "cookie": "webid=6c84fd1130f049c086e79412a394b8ba; webid_ts=1736928849678; _ga=GA1.1.1421434957.1737341349; _ga_MS10Z6SM95=GS1.1.1745460486.9.1.1745462359.60.0.0; _kau=eb2e046f69bd038c0e96fdef2b4f524978603e9612f6a9cbc2bd17a8e7a12721dc851306d2a8c84e0545b54fc14bbf31ffc4e026536e1a3d8dd0bbea44a1825d672c45be360bc5d00da33d6c91f0159ee6320875020911cde04b23299b6980380d038ff8fcbd312981d090ae5fb231d588dc67c7722758edee31f514df4534353939303935303936363437373236323331313430333830323438383035335f9dd3573ab50f9cd5ff160b958f5b75; __T_=1; __T_SECURE=1; _T_ANO=h0E6xQW9qWz86VEyHdaATWmRtLpBc1onkeThf27HAgEU/wPFRdfxS1Qg+CRE7VlDp52YmjppKinS6xNWOV1D24P3OVO4cSCk7QVLe6SSpe6AOdMTsiUMPv7o7amPBtVGA4IreYGefNAth5KHD5Cz12cFUTmQ+3/5EFTXeCHWueYE0VYFulwkqOGoZz9kmVpcR+v/4l4Vt4m6W/u7EWTqbuZEtF8lpNgfolxgJdewKj3nF5Xrqqrl0k5EtHiFOCM1Fcwj89IxGzyqOcKekDkeNqVkF6VWGUQmL2J29FE5JnlaH8xmfwI2+8kFOZy2syaxTIT3Y09TG3FA0jz6x4fObg==",
-            "Referer": "https://pf.kakao.com/_hqGbn",
-            "Referrer-Policy": "strict-origin-when-cross-origin"
-        },
-        "body": null,
-        "method": "GET"
-    });
 }

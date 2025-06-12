@@ -51,7 +51,7 @@ export const getTodayMenu = async (menuData) => {
     const todayMenuPost = findTodayMenuPosts(...posts);
     const photos = todayMenuPost[0].media;
 
-    const url = photos.map((photo) => photo.url);
+    const urls = photos.map((photo) => photo.url);
 
-    return url;
+    return urls;
 }

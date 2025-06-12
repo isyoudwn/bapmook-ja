@@ -6,23 +6,37 @@ import nodeCron from "node-cron";
 const slackClient = new WebClient(SLACK_TOKEN);
 
 const sendImageToSlack = async () => {
-    const imageUrls = await getMenu();
-    
-    await slackClient.chat.postMessage({
-        channel: '#bapmook-ja',
-        text: '오늘의 밥플러스 메뉴 입니다!',
-        attachments: [
+    const todayMenus = await getMenu();
+
+    for (const menu of todayMenus) {
+        const blocks = [
             {
-                text: "hello",
-                image_url: imageUrls[0],
-                alt_text: '메뉴 이미지',
+                type: 'section',
+                text: {
+                    type: 'mrkdwn',
+                    text: `🍇 오늘의 *${menu.branchName}* 지점 메뉴입니다`,
+                },
             },
-        ],
-    });
-}
+            ...menu.imageUrls.map((url) => ({
+                type: 'image',
+                image_url: url,
+                alt_text: '메뉴 이미지',
+            })),
+        ];
 
+        await slackClient.chat.postMessage({
+            text : "오늘의 메뉴!",
+            channel: '#bapmook-ja',
+            blocks,
+        });
+    }
+};
 
-export const startCron = () => nodeCron.schedule('0 10 * * *', () => {
-    console.log('[10AM] 슬랙 전송 트리거 실행됨');
+// export const startCron = () => nodeCron.schedule('0 10 * * 1-5', () => {
+//     console.log('[10AM] 슬랙 전송 트리거 실행됨 (월~금)');
+//     sendImageToSlack();
+// });
+
+export const startCron = () => nodeCron.schedule('* * * * *', () => {
     sendImageToSlack();
 });

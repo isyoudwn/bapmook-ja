@@ -9,3 +9,5 @@ configDotenv({ path: path.resolve(__dirname, '.env') });
 
 export const PORT = process.env.PORT;
 export const SLACK_TOKEN = process.env.SLACK_TOKEN;
+export const SUNG_SOO_6 = process.env.SUNG_SOO_6;
+export const SUNG_SOO_STATION = process.env.SUNG_SOO_STATION;
