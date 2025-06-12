@@ -1,11 +1,10 @@
 import { WebClient } from "@slack/web-api"
 import { getMenu } from "./menuController.js"
 import { SLACK_TOKEN } from "./config.js";
-import nodeCron from "node-cron";
 
 const slackClient = new WebClient(SLACK_TOKEN);
 
-const sendImageToSlack = async () => {
+export const sendMessageToSlack = async () => {
     const todayMenus = await getMenu();
 
     for (const menu of todayMenus) {
@@ -31,8 +30,3 @@ const sendImageToSlack = async () => {
         });
     }
 };
-
-export const startCron = () => nodeCron.schedule('0 10 * * 1-5', () => {
-    console.log('[10AM] 슬랙 전송 트리거 실행됨 (월~금)');
-    sendImageToSlack();
-});

@@ -1,4 +1,4 @@
-import { todayMenu } from "./menuService.js";
+import { todayMenu } from "../domain/menu/menuService.js";
 import { SUNG_SOO_6, SUNG_SOO_STATION } from "./config.js";
 
 /**

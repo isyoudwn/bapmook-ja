@@ -1,4 +1,4 @@
-import { getKoreanTime } from "./time.js"
+import { getKoreanTime } from "../common/time.js"
 
 const INFO = "소식";
 
