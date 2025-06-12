@@ -32,11 +32,7 @@ const sendImageToSlack = async () => {
     }
 };
 
-// export const startCron = () => nodeCron.schedule('0 10 * * 1-5', () => {
-//     console.log('[10AM] 슬랙 전송 트리거 실행됨 (월~금)');
-//     sendImageToSlack();
-// });
-
-export const startCron = () => nodeCron.schedule('* * * * *', () => {
+export const startCron = () => nodeCron.schedule('0 10 * * 1-5', () => {
+    console.log('[10AM] 슬랙 전송 트리거 실행됨 (월~금)');
     sendImageToSlack();
 });
