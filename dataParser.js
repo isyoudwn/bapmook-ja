@@ -29,7 +29,6 @@ const findTodayMenuPosts = (posts) => {
         );
     };
 
-
     const regex = dateRegex(month, day);
 
     const todayPost = [];

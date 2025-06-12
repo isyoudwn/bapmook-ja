@@ -8,3 +8,4 @@ const __dirname = path.dirname(__filename);
 configDotenv({ path: path.resolve(__dirname, '.env') });
 
 export const PORT = process.env.PORT;
+export const SLACK_TOKEN = process.env.SLACK_TOKEN;

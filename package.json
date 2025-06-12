@@ -10,9 +10,11 @@
   "author": "isyoudwn",
   "license": "ISC",
   "dependencies": {
+    "@slack/web-api": "^7.9.2",
     "cheerio": "^1.1.0",
     "dotenv": "^16.5.0",
     "express": "^5.1.0",
-    "luxon": "^3.6.1"
+    "luxon": "^3.6.1",
+    "node-cron": "^4.1.0"
   }
 }
