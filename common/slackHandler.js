@@ -10,10 +10,11 @@ export const sendMessageToSlack = async () => {
     for (const menu of todayMenus) {
         const blocks = [
             {
-                type: 'section',
+                type: 'header',
                 text: {
-                    type: 'mrkdwn',
-                    text: `🍇 오늘의 *${menu.branchName}* 지점 메뉴입니다`,
+                    type: 'plain_text',
+                    text: `🍽️ 오늘의 ${menu.branchName} 메뉴`,
+                    emoji: true,
                 },
             },
             ...menu.imageUrls.map((url) => ({
@@ -24,7 +25,7 @@ export const sendMessageToSlack = async () => {
         ];
 
         await slackClient.chat.postMessage({
-            text : "오늘의 메뉴!",
+            text: "밥묵자!",
             channel: '#bapmook-ja',
             blocks,
         });
