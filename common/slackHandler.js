@@ -1,12 +1,9 @@
 import { WebClient } from "@slack/web-api"
-import { getMenu } from "../presentation/menuController.js"
 import { SLACK_TOKEN } from "./config.js";
 
 const slackClient = new WebClient(SLACK_TOKEN);
 
-export const sendMessageToSlack = async () => {
-    const todayMenus = await getMenu();
-
+const sendMessageToSlack = async (todayMenus) => {
     for (const menu of todayMenus) {
         const blocks = [
             {
@@ -31,3 +28,5 @@ export const sendMessageToSlack = async () => {
         });
     }
 };
+
+export { sendMessageToSlack }

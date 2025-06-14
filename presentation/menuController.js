@@ -4,7 +4,7 @@ import { SUNG_SOO_6, SUNG_SOO_STATION } from "../common/config.js";
 /**
  * 성수역 menu 가져오기
  */
-export const getMenu = async () => {
+const getMenu = async () => {
     const stationBranchMenu = await todayMenu(SUNG_SOO_STATION);
     const sixthBranchMenu = await todayMenu(SUNG_SOO_6);
 
@@ -21,3 +21,5 @@ export const getMenu = async () => {
     ]
 
 }
+
+export { getMenu }
