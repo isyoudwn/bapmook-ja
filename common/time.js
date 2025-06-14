@@ -6,4 +6,4 @@ const getKoreanTime = () => {
     return DateTime.now().setZone(TIME_ZONE);
 };
 
-export { getKoreanTime }
+export { getKoreanTime, TIME_ZONE }
