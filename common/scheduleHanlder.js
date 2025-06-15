@@ -24,22 +24,4 @@ const startCron = () =>
         timezone: TIME_ZONE
     });
 
-/**
- * 테스트용 cron
- */
-// const startCron = () => nodeCron.schedule('0 * * * * *', async () => {
-//     try {
-//         const todayMenus = await getMenu();
-//         sendMessageToSlack(todayMenus);
-
-//     } catch (error) {
-//         if (error instanceof MenuError) {
-//             console.log(error.message);
-//         }
-//         else {
-//             console.log("예상치 못한 에러 : ", error)
-//         }
-//     }
-// });
-
 export { startCron }

@@ -4,6 +4,24 @@ import MenuError from "./MenuError.js";
 const INFO = "소식";
 
 /**
+ * 오늘 메뉴를 가져온다
+ * @param {Array} menuData 
+ */
+const getTodayMenu = async (menuData) => {
+    const posts = getRecentPosts(menuData);
+    const todayMenuPost = findTodayMenuPosts(...posts);
+
+    if (todayMenuPost.length == 0) {
+        throw new MenuError("no menu today");
+    }
+
+    const photos = todayMenuPost[0].media;
+    const urls = photos.map((photo) => photo.url);
+
+    return urls;
+}
+
+/**
  * 최근 포스트를 가져온다
  * @param {Array} menuData 
  * @returns array
@@ -33,24 +51,6 @@ const findTodayMenuPosts = (posts) => {
     const todayPost = posts.filter(post => regex.test(post.title));
 
     return todayPost;
-}
-
-/**
- * 오늘 메뉴를 가져온다
- * @param {Array} menuData 
- */
-const getTodayMenu = async (menuData) => {
-    const posts = getRecentPosts(menuData);
-    const todayMenuPost = findTodayMenuPosts(...posts);
-
-    if (todayMenuPost.length == 0) {
-        throw new MenuError("no menu today");
-    }
-
-    const photos = todayMenuPost[0].media;
-    const urls = photos.map((photo) => photo.url);
-
-    return urls;
 }
 
 export { getRecentPosts, getTodayMenu }
