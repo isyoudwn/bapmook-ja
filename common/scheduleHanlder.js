@@ -7,6 +7,7 @@ import { TIME_ZONE } from "./time.js";
 const startCron = () =>
     nodeCron.schedule('10 11 * * 1-5', async () => {
         try {
+            console.log("[11:10] 트리거");
             const todayMenus = await getMenu();
             sendMessageToSlack(todayMenus);
 
