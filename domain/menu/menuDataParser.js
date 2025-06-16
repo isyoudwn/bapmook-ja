@@ -34,9 +34,15 @@ const getRecentPosts = (menuData) => {
 
 const dateRegex = (month, day) => {
     return new RegExp(
-        `(?:${month}|0?${month})[\\.\\/월\\s]*0?${day}[일\\s]?(?:중식)?`
+        `(?:${month}|0?${month})[\\.\\/월\\s]*0?${day}[일\\s]?`
     );
 };
+
+const dayOfWeekRegex = (dayOfWeek) => {
+    return new RegExp(`\\(${dayOfWeek}\\)`);
+};
+
+
 
 /**
  * 오늘의 포스트를 가져온다
@@ -47,10 +53,20 @@ const findTodayMenuPosts = (posts) => {
     const now = getKoreanTime();
     const month = Number(now.month);
     const day = Number(now.day);
+    const dayOfWeek = now.dayOfWeek;
+
     const regex = dateRegex(month, day);
-    const todayPost = posts.filter(post => regex.test(post.title));
+    const dayRegex = dayOfWeekRegex(dayOfWeek);
+
+    // 날짜로 먼저 필터링
+    let todayPost = posts.filter(post => regex.test(post.title));
+
+    // 날짜가 없으면 요일로 필터링
+    if (todayPost.length === 0) {
+        todayPost = posts.filter(post => dayRegex.test(post.title));
+    }
 
     return todayPost;
-}
+};
 
 export { getRecentPosts, getTodayMenu }

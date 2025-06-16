@@ -4,24 +4,46 @@ import { getMenu } from "../presentation/menuController.js";
 import MenuError from "../domain/menu/MenuError.js";
 import { TIME_ZONE } from "./time.js";
 
+// const startCron = () =>
+//     nodeCron.schedule('10 11 * * 1-5', async () => {
+//         try {
+//             console.log("[11:10] 트리거");
+//             const todayMenus = await getMenu();
+//             sendMessageToSlack(todayMenus);
+
+//         } catch (error) {
+//             if (error instanceof MenuError) {
+//                 console.log(error.message);
+//             }
+//             else {
+//                 console.log("예상치 못한 에러 : ", error)
+//             }
+//         }
+//     },
+//     {
+//         timezone: TIME_ZONE
+//     });
+
+/**
+ * 테스트용 cron
+ */
 const startCron = () =>
-    nodeCron.schedule('10 11 * * 1-5', async () => {
+    nodeCron.schedule('35 10 * * 1-5', async () => {
         try {
-            console.log("[11:10] 트리거");
+            console.log("[10:16] 트리거");
             const todayMenus = await getMenu();
             sendMessageToSlack(todayMenus);
 
         } catch (error) {
             if (error instanceof MenuError) {
                 console.log(error.message);
-            }
-            else {
-                console.log("예상치 못한 에러 : ", error)
+            } else {
+                console.log("예상치 못한 에러 : ", error);
             }
         }
     },
-    {
-        timezone: TIME_ZONE
-    });
+        {
+            timezone: TIME_ZONE
+        });
 
 export { startCron }
